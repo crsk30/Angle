@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>Add a Product</h2>
+<div mat-dialog-content>
+    <form [formGroup]="modalForm">
+      <mat-form-field>
+        <input matInput placeholder="Enter Name" formControlName="input1">
+        <mat-error *ngIf="modalForm.get('input1')?.hasError('required')">
+          Name is required.
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Enter Product Code" formControlName="input2">
+        <mat-error *ngIf="modalForm.get('input2')?.hasError('required')">
+          Product Code is required.
+        </mat-error>
+      </mat-form-field>
+      <br>
+<mat-form-field>
+  <mat-select placeholder="Select Categories" formControlName="input3" multiple>
+    <mat-option *ngFor="let category of categoryOptions" [value]="category">
+      {{ category }}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="modalForm.get('input3')?.hasError('required')">
+    Category is required.
+  </mat-error>
+</mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Input 4" formControlName="input4">
+        <mat-error *ngIf="modalForm.get('input4')?.hasError('required')">
+          Input 4 should be a numeric value.
+        </mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field>
+        <input matInput placeholder="Input 5" formControlName="input5">
+        <mat-error *ngIf="modalForm.get('input5')?.hasError('required')">
+          Input 5 should be a valid email address.
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+  
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button (click)="onSaveClick()">Save</button>
+</div>

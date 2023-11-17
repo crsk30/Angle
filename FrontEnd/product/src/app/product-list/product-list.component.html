@@ -1,0 +1,24 @@
+<div class="header text-center">
+    <button class="btn btn-primary mt-2" (click)="openModal()">Add Product</button>
+</div>
+<div class="card-container">
+  <div class="row m-2">
+    <div *ngFor="let product of products" class="card col-md-3 ">
+      <p>{{ product.name }}</p>
+      <p>{{ product.code }}</p>
+      <p>{{ product.category.join(', ') }}</p>
+      <!-- <img [src]="'http://localhost:3000/uploads/' + product.image" alt="{{ product.name }}" style="max-width: 100%" /> -->
+      <p>{{ product.description }}</p>
+    </div>
+  </div>
+</div>
+  
+  <div
+  infinite-scroll
+  [infiniteScrollDistance]="scrollDistance"
+  [infiniteScrollUpDistance]="scrollUpDistance"
+  (scrolled)="onScroll()"
+>
+  <p *ngIf="products.length % 8 === 0">Loading...</p>
+</div>
+ 
